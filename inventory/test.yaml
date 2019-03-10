@@ -1,0 +1,15 @@
+name: "Ansible"
+version: 2.4
+python_version: 2.7
+
+module:
+- "Network"
+- "Linux Server"
+- "Windows Server"
+
+plugins:
+  action_plugin: true
+  cache_plugin: true
+  shell_plugin: false
+
+# https://yaml.org/

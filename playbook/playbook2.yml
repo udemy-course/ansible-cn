@@ -1,0 +1,9 @@
+- hosts: web1
+  name: play-test
+  tasks:
+  - name: check host connection
+    setup:
+      gather_subset:
+        - '!all'
+        - '!any'
+        - facter
