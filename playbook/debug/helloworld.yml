@@ -1,0 +1,10 @@
+---
+
+- name: Hello World
+  hosts: localhost
+
+  tasks:
+    - name: Hello World
+      debug:
+        msg: "Hello ansible"
+        verbosity: 3

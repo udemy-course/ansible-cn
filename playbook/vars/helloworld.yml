@@ -1,0 +1,13 @@
+---
+
+- name: Hello World
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    myname: Ansible
+
+  tasks:
+    - name: Hello World
+      debug:
+        msg: "Hello {{myname}}"
