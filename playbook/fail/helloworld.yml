@@ -1,0 +1,14 @@
+---
+
+- name: Hello World
+  hosts: localhost
+
+  tasks:
+    - name: test ping
+      ping:
+      register: result
+
+    - name: print result
+      fail:
+        msg: "fail"
+      when: result.ping == "pong"
