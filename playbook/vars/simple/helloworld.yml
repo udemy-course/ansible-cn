@@ -1,0 +1,17 @@
+---
+
+- name: Hello World
+  hosts: localhost
+
+  vars:
+    greetings: "hello from playbook vars"
+    demo:
+      a:
+       - a: 1
+       - b: 2
+      b: test
+
+  tasks:
+    - name: Hello World debug
+      debug:
+        msg: "{{demo}}"
