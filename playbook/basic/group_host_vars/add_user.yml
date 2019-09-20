@@ -1,0 +1,19 @@
+---
+
+- name: create user
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  vars:
+    user_name: demo
+  vars_prompt:
+    - name: user_password
+      private: yes
+      prompt: What is the password?
+
+  tasks:
+    - name: create user
+      user:
+        name: "{{ user_name }}"
+        password: "{{user_password | password_hash('sha512') }}"

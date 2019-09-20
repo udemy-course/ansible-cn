@@ -1,0 +1,16 @@
+---
+
+- name: delete user
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  vars:
+    user_name: demo
+
+  tasks:
+    - name: create user
+      user:
+        name: "{{ user_name }}"
+        state: absent
+        remove: yes
