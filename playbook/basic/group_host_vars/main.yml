@@ -1,0 +1,14 @@
+---
+
+- name: Hello World
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: test vars
+      debug:
+        msg: "ansible_user= {{ ansible_user }}, ansible_user= {{ ansible_password }}, http_port= {{ http_port }}"
+
+
+
+# https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
