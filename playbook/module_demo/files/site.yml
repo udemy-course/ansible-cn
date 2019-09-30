@@ -1,0 +1,18 @@
+---
+# https://docs.ansible.com/ansible/latest/modules/list_of_files_modules.html
+- name: file modules
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Create a directory if it does not exist
+      file:
+        path: /etc/test
+        state: directory
+    
+    - name: test copy module
+      copy:
+        src: files/test.txt
+        dest: /etc/test/test.txt
+
