@@ -1,3 +1,4 @@
 ansible_connection: ssh
 ansible_user: vagrant
 ansible_password: vagrant
+http_port: 80

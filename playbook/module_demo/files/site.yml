@@ -5,6 +5,7 @@
   gather_facts: no
   become: yes
 
+
   tasks:
     - name: Create a directory if it does not exist
       file:
@@ -15,4 +16,9 @@
       copy:
         src: files/test.txt
         dest: /etc/test/test.txt
+
+    - name: template module
+      template:
+        src: templates/test.j2
+        dest: /etc/test/test.cfg
 
