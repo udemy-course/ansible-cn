@@ -16,4 +16,8 @@
       copy:
         src: files/test.txt
         dest: /etc/test/test.txt
-        backup: yes
+
+    - name: test template
+      template:
+        src: templates/test.j2
+        dest: /etc/test/test.cfg

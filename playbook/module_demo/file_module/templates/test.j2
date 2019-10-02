@@ -1,0 +1,7 @@
+[default]
+http_port = {{ http_port }}
+
+[demo]
+{% for id in range(201,211) %}
+{{ host_prefix }}{{ "%02d" | format(id-200) }} = {{ ip_prefix }}{{ id }}
+{% endfor %}
