@@ -1,0 +1,12 @@
+---
+
+- name: system related modules
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: test ping
+      ping:
+
+    - name: test gather fact
+      gather_facts:

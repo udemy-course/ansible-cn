@@ -21,4 +21,3 @@
       template:
         src: templates/test.j2
         dest: /etc/test/test.cfg
-
