@@ -1,0 +1,12 @@
+---
+
+- name: file module
+  hosts: all
+
+  tasks:
+    - name: test ping
+      ping:
+
+    - name: print facts
+      debug:
+        msg: "{{ ansible_date_time }}"
