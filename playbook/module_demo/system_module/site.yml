@@ -2,6 +2,7 @@
 
 - name: file module
   hosts: all
+  become: yes
 
   tasks:
     - name: test ping
@@ -10,3 +11,21 @@
     - name: print facts
       debug:
         msg: "{{ ansible_date_time }}"
+    
+    - name: create group
+      group:
+        name: ansible_demo
+        state: present
+    - name: delete group
+      group:
+        name: ansible_demo
+        state: absent
+    - name: create user
+      user:
+        name: demo
+        password: "{{'demo' | password_hash('sha512')}}"
+    - name: delete user
+      user:
+        name: demo
+        state: absent
+        remove: yes
