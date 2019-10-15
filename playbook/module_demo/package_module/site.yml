@@ -5,14 +5,18 @@
   become: yes
 
   tasks:
-    - name: test yum module
-      yum:
-        name: git
-        state: present
-      when: ansible_facts['distribution'] == "CentOS"
+    # - name: test yum module
+    #   yum:
+    #     name: git
+    #     state: absent
+    #   when: ansible_facts['distribution'] == "CentOS"
 
-    - name: test apt module
-      apt:
+    # - name: test apt module
+    #   apt:
+    #     name: git
+    #     state: absent
+    #   when: ansible_facts['distribution'] == "Ubuntu"
+    - name: test package module
+      package:
         name: git
         state: present
-      when: ansible_facts['distribution'] == "Ubuntu"
