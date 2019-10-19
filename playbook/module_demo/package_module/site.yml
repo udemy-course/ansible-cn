@@ -16,7 +16,14 @@
     #     name: git
     #     state: absent
     #   when: ansible_facts['distribution'] == "Ubuntu"
-    - name: test package module
-      package:
-        name: git
+    # - name: test package module
+    #   package:
+    #     name: git
+    #     state: present
+
+    - name: pip install flask
+      pip:
+        name: flask
         state: present
+        virtualenv: /home/vagrant/vir/
+        virtualenv_command: /usr/bin/python3 -m venv

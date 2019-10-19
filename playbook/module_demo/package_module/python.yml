@@ -1,0 +1,37 @@
+---
+
+- name: install python 3
+  hosts: all
+
+  tasks:
+    - name: install Python on centos
+      become: yes
+      yum:
+        name:
+          - python3
+          - python3-devel
+          - python3-pip
+          - python-setuptools
+        state: present
+      when: ansible_facts['distribution'] == "CentOS"
+
+    - name: install repositories
+      become: true
+      apt_repository:
+        repo: "{{ item }}"
+        update_cache: true
+      with_items:
+        - ppa:deadsnakes/ppa
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: install Python system packages
+      become: true
+      apt:
+        name:
+          - python3.6
+          - python3.6-dev
+          - python-setuptools
+          - python3-pip
+        state: present
+        force_apt_get: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
