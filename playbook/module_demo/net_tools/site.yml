@@ -1,0 +1,21 @@
+---
+
+- name: net-tools module
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: test get_url
+      get_url:
+        url: https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
+        dest: /home/vagrant/
+        checksum: md5:e18a9d1a0a6d858b9787e03fc6fdaa20
+    - name: test unarchive
+      unarchive:
+        src: /home/vagrant/Python-3.8.0.tgz
+        dest: /home/vagrant/
+        remote_src: yes
+    - name: test unarchive local file
+      unarchive:
+        src: Python-3.7.5.tgz
+        dest: /home/vagrant/
