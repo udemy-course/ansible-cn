@@ -1,0 +1,20 @@
+{
+        "changed": true, 
+        "cmd": [
+            "cat", 
+            "/etc/hosts"
+        ], 
+        "delta": "0:00:00.002354", 
+        "end": "2019-10-26 11:47:22.064331", 
+        "failed": false, 
+        "rc": 0, 
+        "start": "2019-10-26 11:47:22.061977", 
+        "stderr": "", 
+        "stderr_lines": [], 
+        "stdout": "127.0.0.1\thost1\thost1\n127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n::1         localhost localhost.localdomain localhost6 localhost6.localdomain6", 
+        "stdout_lines": [
+            "127.0.0.1\thost1\thost1", 
+            "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4", 
+            "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6"
+        ]
+}

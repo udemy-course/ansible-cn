@@ -1,0 +1,15 @@
+---
+
+- name: command module
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: test command
+      command: cat /etc/hosts
+      register: hosts_value
+
+    - debug:
+        msg: "{{ hosts_value}}"
+    

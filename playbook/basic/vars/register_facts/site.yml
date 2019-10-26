@@ -1,0 +1,9 @@
+---
+
+- name: net-tools module
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: test command
+      command: cat /ets/hosts
