@@ -1,0 +1,43 @@
+---
+
+- name: install and start nginx
+  hosts: all
+
+  tasks:
+    - name: install nginx on ubuntu
+      become: yes
+      apt:
+        name:
+          - nginx
+        state: present
+        force_apt_get: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: change index.html on ubuntu
+      become: yes
+      template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: install nginx on centos
+      become: yes
+      yum:
+        name:
+          - epel-release
+          - nginx
+        state: present
+      when: ansible_facts['distribution'] == "CentOS"
+
+    - name: change index.html on Centos
+      become: yes
+      template:
+        src: templates/index.html.j2
+        dest: /usr/share/nginx/html/index.html
+      when: ansible_facts['distribution'] == "CentOS"
+
+    - name: Start service nginx
+      become: yes
+      service:
+        name: nginx
+        state: stopped
