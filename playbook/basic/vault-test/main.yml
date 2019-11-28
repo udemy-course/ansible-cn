@@ -1,0 +1,11 @@
+---
+
+- name: Hello World
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: test vars
+      debug:
+        msg: "ansible_user= {{ ansible_user }}, ansible_password= {{ ansible_password }} http_port= {{ http_port }}"
+
