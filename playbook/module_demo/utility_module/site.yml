@@ -1,0 +1,23 @@
+
+- name: test facts
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    # - name: gather facts
+    #   setup:
+    #     gather_subset: min
+    # - name: test set facts
+    #   set_fact:
+    #     test_set_fact: 'set from set_fact'
+    # - debug:
+    #     var: test_set_fact
+    - name: command
+      command: cat /etc/hosts
+      register: hosts_results
+    - set_fact:
+        hosts_ip: "{{hosts_results['stdout']}}"
+
+    - debug:
+        var: hosts_ip
+    
