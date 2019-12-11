@@ -21,3 +21,18 @@
       template:
         src: templates/test.j2
         dest: /etc/test/test.cfg
+    
+    - name: fetch a file
+      fetch:
+        src: /etc/test/test.txt
+        dest: ./tmp/
+        flat: yes
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      uri:
+        url: http://www.example.com
+        return_content: yes
+      register: result
+    
+    - debug:
+        var: result
