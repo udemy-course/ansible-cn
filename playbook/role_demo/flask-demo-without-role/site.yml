@@ -1,0 +1,62 @@
+---
+- name: flask demo
+  hosts: all
+
+  tasks:
+    - name: install Python on centos
+      become: yes
+      yum:
+        name:
+          - python3
+          - python3-devel
+          - python3-pip
+          - python-setuptools
+        state: present
+      when: ansible_facts['distribution'] == "CentOS"
+
+    - name: install repositories
+      become: true
+      apt_repository:
+        repo: "{{ item }}"
+        update_cache: true
+      with_items:
+        - ppa:deadsnakes/ppa
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: install Python system packages
+      become: true
+      apt:
+        name:
+          - python3.6
+          - python3.6-dev
+          - python-setuptools
+          - python3-pip
+        state: present
+        force_apt_get: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: install git
+      become: true
+      package:
+        name: git
+        state: latest
+
+    - name: checkout source code from github
+      git:
+        repo: 'https://github.com/xiaopeng163/flask-ansible-demo'
+        dest: ~/flask-ansible-demo
+    
+    - name: pip install requirements
+      pip:
+        requirements: ~/flask-ansible-demo/requirements.txt
+        state: present
+        virtualenv: ~/flask-ansible-demo/.env
+        virtualenv_command: /usr/bin/python3 -m venv
+
+    - name: start flask app
+      shell: nohup ~/flask-ansible-demo/.env/bin/python ~/flask-ansible-demo/wsgi.py&
+      register: myoutput
+    
+    - name: print stdout
+      debug:
+        var: myoutput
