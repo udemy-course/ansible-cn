@@ -1,0 +1,16 @@
+---
+- name: flask demo
+  hosts: all
+
+  tasks:
+    - include_role:
+        name: install-python
+    - include_role:
+        name: deploy-code
+    - name: start flask app
+      shell: nohup ~/flask-ansible-demo/.env/bin/python ~/flask-ansible-demo/wsgi.py&
+      register: myoutput
+    
+    - name: print stdout
+      debug:
+        var: myoutput
