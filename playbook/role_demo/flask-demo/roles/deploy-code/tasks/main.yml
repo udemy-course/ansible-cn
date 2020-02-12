@@ -8,6 +8,7 @@
   git:
     repo: '{{ repo_url }}'
     dest: ~/flask-ansible-demo
+  notify: test handlers
 
 - include:
     pip.yml
