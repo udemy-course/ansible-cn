@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-galaxy-demo
+http_port: 80
+host_ip: 0.0.0.0

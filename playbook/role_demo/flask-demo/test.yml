@@ -1,0 +1,10 @@
+---
+- name: test galaxy role
+  hosts: all
+  become: yes
+
+  tasks:
+    - include_role:
+        name: ansible-galaxy-demo
+      vars:
+        http_port: 8080

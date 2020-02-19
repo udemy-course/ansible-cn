@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-galaxy-demo
+
+- name: copy templates to dst host
+  template:
+    src: templates/test.j2
+    dest: /etc/test.ini
