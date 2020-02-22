@@ -1,0 +1,4 @@
+roles:
+  - src: https://github.com/xiaopeng163/ansible-galaxy-demo
+    scm: git
+    version: master
