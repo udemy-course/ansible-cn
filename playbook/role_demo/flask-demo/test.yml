@@ -5,6 +5,6 @@
 
   tasks:
     - include_role:
-        name: ansible-galaxy-demo
+        name: xiaopeng163.ansible_galaxy_demo
       vars:
         http_port: 8080
