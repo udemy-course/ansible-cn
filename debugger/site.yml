@@ -1,0 +1,8 @@
+- name: test debugger play
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: install a package
+      yum:
+        name: does_not_exist
+        state: present
