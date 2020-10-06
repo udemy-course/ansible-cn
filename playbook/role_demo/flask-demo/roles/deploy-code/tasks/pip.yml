@@ -1,0 +1,6 @@
+- name: pip install requirements
+  pip:
+    requirements: ~/flask-ansible-demo/requirements.txt
+    state: present
+    virtualenv: ~/flask-ansible-demo/.env
+    virtualenv_command: /usr/bin/python3 -m venv

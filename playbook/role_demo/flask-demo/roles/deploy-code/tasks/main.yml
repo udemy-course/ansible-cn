@@ -1,0 +1,14 @@
+- name: install git
+  become: true
+  package:
+    name: git
+    state: latest
+
+- name: checkout source code from github
+  git:
+    repo: '{{ repo_url }}'
+    dest: ~/flask-ansible-demo
+  notify: test handlers
+
+- include:
+    pip.yml

@@ -11,7 +11,7 @@
     - name: print facts
       debug:
         msg: "{{ ansible_date_time }}"
-    
+
     - name: create group
       group:
         name: ansible_demo
@@ -23,7 +23,7 @@
     - name: create user
       user:
         name: demo
-        password: "{{'demo' | password_hash('sha512')}}"
+        password: "{{ 'demo' | password_hash('sha512') }}"
     - name: delete user
       user:
         name: demo

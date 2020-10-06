@@ -1,0 +1,4 @@
+
+- name: test handlers
+  debug:
+    msg: "Message from handlers"
