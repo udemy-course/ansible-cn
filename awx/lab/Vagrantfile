@@ -7,18 +7,12 @@ boxes = [
     {
         :name => "awx",
         :eth1 => "192.168.200.10",
-        :mem => "4096",
+        :mem => "2046",
         :cpu => 1
     },
     {
-        :name => "ansible-node1",
+        :name => "ansible-node",
         :eth1 => "192.168.200.11",
-        :mem => "1024",
-        :cpu => 1
-    },
-    {
-        :name => "ansible-node2",
-        :eth1 => "192.168.200.12",
         :mem => "1024",
         :cpu => 1
     }

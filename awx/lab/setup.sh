@@ -14,5 +14,15 @@ if [ "$HOSTNAME" = "awx" ]; then
 
     rm -rf get-docker.sh
 
-    sudo apt-get install -y python3-venv
+    # install python venv
+    sudo apt-get install -y python3-venv python3-pip
+    # install docker-compose
+    sudo pip3 install docker-compose
+    sudo pip3 install ansible==2.9.*
+    pip3 install docker
 fi
+
+# open password auth for backup if ssh key doesn't work, bydefault, username=vagrant password=vagrant
+# please comment these two lines if you want to disable username/password login
+sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sudo service sshd restart
