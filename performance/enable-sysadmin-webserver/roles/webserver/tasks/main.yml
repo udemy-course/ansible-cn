@@ -1,5 +1,10 @@
 ---
-- name: Install packages
+- name: Add epel-release repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install Nginx
   package:
     name: "{{ webserver_packages }}"
     state: latest
@@ -12,17 +17,6 @@
     group: root
     mode: 0644
   notify: Reload NGINX
-
-# Uncomment below to use file-based deployment instead of git-based deployment
-# Included only as an example
-# - name: Copy site contents
-#   copy:
-#     dest: "{{ item.root }}/"
-#     src: "usr/share/nginx/{{ item.name }}/"
-#     owner: root
-#     group: root
-#     mode: 0755
-#   with_items: "{{ webserver_static_sites }}"
 
 - name: Clone git repositories
   git:

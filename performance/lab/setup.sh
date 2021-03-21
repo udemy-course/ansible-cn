@@ -2,7 +2,7 @@
 
 if [ "$HOSTNAME" = "ansible-controller" ]; then
     # install python venv
-    sudo yum install -y python3-venv python3-pip
+    sudo yum install -y git sshpass python3-venv python3-pip
     sudo pip3 install pip --upgrade
     pip3 install ansible
 fi
